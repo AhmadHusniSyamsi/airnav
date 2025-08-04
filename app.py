@@ -59,8 +59,6 @@ def ground_check():
     return render_template('ground_check.html', title='Ground Check')
 
 
-
-
 @app.route('/main_dashboard')
 @login_required
 def main_dashboard():
@@ -158,6 +156,32 @@ def dashboard():
         Transmission.tx2_power, Transmission.tx2_swr, Transmission.tx2_mod,
         Transmission.tanggal, Transmission.pic
     ).order_by(Transmission.tanggal).all()
+    
+    
+    
+data_rows = []
+
+@app.route('/', methods=['GET', 'POST'])
+def performance_curve():
+    if request.method == 'POST':
+        new_row = {
+            'jarak': request.form['jarak'],
+            'degree': request.form['degree'],
+            'tx1_ddm': request.form['tx1_ddm'],
+            'tx1_sum': request.form['tx1_sum'],
+            'tx1_mod90': request.form['tx1_mod90'],
+            'tx1_mod150': request.form['tx1_mod150'],
+            'tx1_rf': request.form['tx1_rf'],
+            'tx2_ddm': request.form['tx2_ddm'],
+            'tx2_sum': request.form['tx2_sum'],
+            'tx2_mod90': request.form['tx2_mod90'],
+            'tx2_mod150': request.form['tx2_mod150'],
+            'tx2_rf': request.form['tx2_rf'],
+        }
+        data_rows.append(new_row)
+        return redirect(url_for('ground_check'))
+
+    return render_template('ground_check.html', data=data_rows)
 
     # Data transform
     dates = [row.tanggal.strftime('%Y-%m-%d') for row in data]
