@@ -1,0 +1,137 @@
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --bg-light: #f8f9fa;
+    --text-dark: #333;
+    --text-muted: #6c757d;
+    --table-stripe: #f2f2f2;
+    --table-head-bg: grey;
+    --white: #fff;
+}
+
+/* Background overlay logo AirNav */
+.bg-overlay {
+    background: url('../img/airnav_logo.png') no-repeat center center;
+    background-size: contain;
+    opacity: 0.2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -9999;
+    pointer-events: none;
+}
+
+/* Layer untuk isi utama agar tidak tertutup overlay */
+main, nav, footer {
+    position: relative;
+    z-index: 1;
+}
+
+body {
+    background-color: var(--bg-light);
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+}
+
+/* ----------- TABEL ----------- */
+.table {
+    font-size: 0.875rem;
+    word-wrap: break-word;
+    table-layout: auto;
+}
+
+.table th,
+.table td {
+    padding: 0.5rem 0.75rem;
+    vertical-align: middle;
+    text-align: left;
+    max-width: 160px;
+    white-space: normal;
+}
+
+.table thead th {
+    background-color: var(--table-head-bg);
+    color: var(--white);
+    text-align: center;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: var(--table-stripe);
+}
+
+/* ----------- HEADING & TEXT ----------- */
+h2, h3, h4, h5 {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+p.text-muted {
+    font-size: 0.9rem;
+    color: var(--text-muted) !important;
+    margin-top: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+/* ----------- FORM & BUTTON ----------- */
+form select.form-select,
+form button {
+    font-size: 0.875rem;
+}
+
+.btn-sm {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* ----------- KARTU RINGKASAN GRAFIK ----------- */
+.bg-white.p-3.rounded.shadow-sm {
+    min-height: 280px;
+    overflow-x: auto;
+}
+
+/* ----------- CONTAINER ----------- */
+.container {
+    padding-bottom: 3rem;
+}
+
+/* ----------- LOGIN GLASS STYLE (Opsional) ----------- */
+.login-glass {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.login-glass input {
+    background: rgba(255, 255, 255, 0.25);
+    border: none;
+    color: white;
+}
+
+.login-glass input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.login-glass .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.35);
+    border: none;
+    color: white;
+    box-shadow: none;
+}
+
+.login-glass .btn-primary {
+    background-color: rgba(0, 123, 255, 0.7);
+    border: none;
+}
+
+.login-glass a {
+    color: #cfe8ff;
+}

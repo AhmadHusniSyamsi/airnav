@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height: 90vh;">
+        <div class="col-md-5">
+            <div class="login-glass">
+
+                <h4 class="text-center mb-4">Login</h4>
+                <p class="text-center">Selamat Datang</p>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" placeholder="Masukkan username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">LOGIN</button>
+                    </div>
+                </form>
+
+                <div class="text-center mt-3">
+                    <small>Lupa password? <a href="#">Klik di sini</a></small><br>
+                    <small>Belum punya akun? <a href="{{ url_for('auth.register') }}">Daftar di sini</a></small>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
