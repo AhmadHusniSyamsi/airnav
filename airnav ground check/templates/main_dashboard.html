@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 fw-bold text-center">Dashboard Monitoring Performance Check </h2>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <!-- VHF -->
+    <div class="col">
+      <a href="{{ url_for('dashboard') }}" class="text-decoration-none">
+        <div class="card border-0 shadow-lg h-100 bg-gradient bg-primary text-white hover-scale">
+          <div class="card-body">
+            <h5 class="card-title">VHF</h5>
+            <p class="card-text">Very High Frequency</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- ILS -->
+    <div class="col">
+      <a href="{{ url_for('ils.dashboard_ils') }}" class="text-decoration-none">
+        <div class="card border-0 shadow-lg h-100 bg-gradient bg-info text-white hover-scale">
+          <div class="card-body">
+            <h5 class="card-title">ILS</h5>
+            <p class="card-text">Instrument Landing System</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- DVOR -->
+    <div class="col">
+      <a href="{{ url_for('dvor.dvor_dashboard') }}" class="text-decoration-none">
+        <div class="card border-0 shadow-lg h-100 bg-gradient bg-danger text-white hover-scale">
+          <div class="card-body">
+            <h5 class="card-title">DVOR</h5>
+            <p class="card-text">Doppler VHF Omni Range</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Radar -->
+    <div class="col">
+      <a href="{{ url_for('radar.radar_dashboard') }}" class="text-decoration-none">
+        <div class="card border-0 shadow-lg h-100 bg-gradient bg-dark text-white hover-scale">
+          <div class="card-body">
+            <h5 class="card-title">Radar</h5>
+            <p class="card-text">Radar Monitoring</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- DME -->
+    <div class="col">
+      <a href="{{ url_for('dme.dme_dashboard') }}" class="text-decoration-none">
+        <div class="card border-0 shadow-lg h-100 bg-gradient bg-success text-white hover-scale">
+          <div class="card-body">
+            <h5 class="card-title">DME</h5>
+            <p class="card-text">Distance Measurement Equipment</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- History -->
+    <div class="col">
+      <a href="{{ url_for('history') }}" class="text-decoration-none">
+        <div class="card border-0 shadow-lg h-100 bg-gradient bg-secondary text-white hover-scale">
+          <div class="card-body">
+            <h5 class="card-title">History</h5>
+            <p class="card-text">Catatan Pemeriksaan</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Animasi hover -->
+<style>
+  .hover-scale {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.03);
+  }
+</style>
+{% endblock %}

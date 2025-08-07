@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+  <h2 class="mb-4 fw-bold text-center">GROUND CHECK PERFORMANCE CURVE</h2>
+
+  <form method="POST">
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="lokasi" class="form-label fw-bold">Lokasi:</label>
+        <select name="lokasi" class="form-select" required>
+          <option value="Airnav Surabaya">Airnav Surabaya</option>
+          <option value="Airnav Jakarta">Airnav Malang</option>
+          <option value="Airnav Jakarta">Airnav Dhoho</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="tanggal" class="form-label fw-bold">Tanggal:</label>
+        <input type="date" name="tanggal" class="form-control" required>
+      </div>
+    </div>
+
+    <table class="table table-bordered">
+      <thead class="table-light text-center">
+        <tr>
+          <th rowspan="5">FREQ</th>
+          <th rowspan="2">JARAK (M)</th>
+          <th rowspan="2">DEGREE (°)</th>
+          <th colspan="6">TX 1</th>
+          <th colspan="6">TX 2</th>
+        </tr>
+        <tr>
+          <th>DDM (%)</th><th>DDM (µA)</th><th>SUM (%)</th><th>MOD 90 Hz</th><th>MOD 150 Hz</th><th>RF LEVEL (dB)</th>
+          <th>DDM (%)</th><th>DDM (µA)</th><th>SUM (%)</th><th>MOD 90 Hz</th><th>MOD 150 Hz</th><th>RF LEVEL (dB)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set data_rows = [
+          ("35°"), ("30°"), ("25°"),
+          ("20°"), ("15°"), ("10°"),
+          ("5°"), ("1.85°"), ("0°"), ("1.85°"), ("5°"), ("10°"),
+          ("15°"), ("20°"), ("25°"),
+          ("30°"), ("35°"), 
+        ] %}
+
+        {% for degree in data_rows %}
+        <tr>
+          <td><input type="hidden" name="FREQ[]" value="{{ FREQ }}">{{ FREQ }}</td>
+          <td><input type="text" name="jarak[]" value="{{ jarak }}" class="form-control" required></td>
+          <td><input type="hidden" name="degree[]" value="{{ degree }}">{{ degree }}</td>
+          {% for i in range(12) %}
+          <td><input type="text" name="data{{ loop.index0 }}_{{ loop.index }}" class="form-control" required></td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Teknisi dan Paraf -->
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h5 class="fw-bold">Teknisi On Duty:</h5>
+        <input type="text" name="teknisi1" class="form-control mb-2" placeholder="Teknisi 1">
+        <input type="text" name="teknisi2" class="form-control mb-2" placeholder="Teknisi 2">
+        <input type="text" name="teknisi3" class="form-control mb-2" placeholder="Teknisi 3">
+        <input type="text" name="teknisi4" class="form-control mb-2" placeholder="Teknisi 4">
+      </div>
+      <div class="col-md-6">
+        <h5 class="fw-bold">Paraf:</h5>
+        <input type="text" name="paraf1" class="form-control mb-2" placeholder="Paraf 1">
+        <input type="text" name="paraf2" class="form-control mb-2" placeholder="Paraf 2">
+        <input type="text" name="paraf3" class="form-control mb-2" placeholder="Paraf 3">
+        <input type="text" name="paraf4" class="form-control mb-2" placeholder="Paraf 4">
+      </div>
+    </div>
+
+    <div class="mt-4 text-end">
+      <button type="submit" class="btn btn-primary">Simpan Data</button>
+    </div>
+  </form>
+
+  <footer class="text-center mt-5 text-muted">
+  </footer>
+</div>
+{% endblock %}
